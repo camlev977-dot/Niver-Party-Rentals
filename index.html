@@ -1,0 +1,423 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Niver Party Rentals</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f5f4f1;
+      color: #1f1f1f;
+      line-height: 1.6;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(245, 244, 241, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #ddd8cf;
+      padding: 14px 8%;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #1f1f1f;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 8%;
+      background: #f5f4f1;
+      text-align: center;
+    }
+
+    .hero {
+      max-width: 900px;
+    }
+
+    .logo {
+      width: 260px;
+      max-width: 85%;
+      margin-bottom: 24px;
+      mix-blend-mode: multiply;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 7rem);
+      letter-spacing: 4px;
+      font-weight: 400;
+    }
+
+    .script {
+      font-family: "Brush Script MT", cursive;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 400;
+      margin: 5px 0 25px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto 35px;
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
+    }
+
+    .btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 50px;
+      border: 1px solid #7c8979;
+      color: #1f1f1f;
+      background: white;
+      transition: 0.3s ease;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #7c8979;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      font-weight: 400;
+      letter-spacing: 2px;
+    }
+
+    .section-title p {
+      max-width: 650px;
+      margin: 12px auto 0;
+      color: #5d5d5d;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .about-card {
+      background: white;
+      padding: 42px;
+      border-radius: 28px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.06);
+    }
+
+    .about-card h3 {
+      font-size: 2.1rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .about-img {
+      width: 100%;
+      border-radius: 30px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .package-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.06);
+      transition: 0.3s ease;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .package-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .package-content {
+      padding: 24px;
+    }
+
+    .package-content h3 {
+      font-weight: 400;
+      font-size: 1.45rem;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #7c8979;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 28px;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.06);
+      transition: 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    .cta {
+      background: #d9c3a7;
+      text-align: center;
+      border-radius: 40px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 30px;
+    }
+
+    .cta h2 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 400;
+    }
+
+    .cta p {
+      max-width: 600px;
+      margin: 15px auto 28px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px;
+      background: #7c8979;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 950px) {
+      .about-grid,
+      .packages,
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      section {
+        padding: 60px 6%;
+      }
+
+      .about-grid,
+      .packages,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery img,
+      .package-card img {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#packages">Packages</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header id="home">
+    <div class="hero">
+      <img src="images/niver-1.png" alt="Niver Party Rentals Logo" class="logo">
+
+      <h1>NPR</h1>
+      <div class="script">Niver Party Rentals</div>
+
+      <p>
+        Soft, elegant event setups designed to make every celebration feel polished,
+        personal, and unforgettable.
+      </p>
+
+      <div class="btns">
+        <a href="#packages" class="btn">View Packages</a>
+        <a href="#contact" class="btn">Book Now</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Styled celebrations made simple.</h3>
+
+        <p>
+          Niver Party Rentals creates custom balloon garlands, backdrops, drapery,
+          and full party displays with a soft luxury feel. Every setup can be
+          customized to match your theme, colors, and vision.
+        </p>
+
+        <br>
+
+        <p>
+          Packages include setup, breakdown, and delivery within 15 miles of 08096,
+          excluding grab & go options.
+        </p>
+      </div>
+
+      <img src="images/niver-5.jpeg" alt="Elegant party rental package" class="about-img">
+    </div>
+  </section>
+
+  <section id="packages">
+    <div class="section-title">
+      <h2>Package Guide</h2>
+      <p>
+        Choose from simple grab & go garlands, backdrop displays, classic setups,
+        signature designs, and elegant drapery packages.
+      </p>
+    </div>
+
+    <div class="packages">
+
+      <div class="package-card">
+        <img src="images/niver-4.jpeg" alt="Grab and Go Garland">
+        <div class="package-content">
+          <h3>Grab & Go Garland</h3>
+          <p class="price">Starting at $150</p>
+          <p>Perfect for DIY setups while still getting a professional look.</p>
+        </div>
+      </div>
+
+      <div class="package-card">
+        <img src="images/niver-5.jpeg" alt="Essentials Collection">
+        <div class="package-content">
+          <h3>Essentials Collection</h3>
+          <p class="price">Starting at $275</p>
+          <p>Ideal for smaller events, simple setups, and soft balloon styling.</p>
+        </div>
+      </div>
+
+      <div class="package-card">
+        <img src="images/niver-6.jpeg" alt="Classic Celebration">
+        <div class="package-content">
+          <h3>Classic Celebration</h3>
+          <p class="price">Starting at $325</p>
+          <p>A popular balance of simple, styled, and elevated party design.</p>
+        </div>
+      </div>
+
+      <div class="package-card">
+        <img src="images/niver-7.jpeg" alt="Signature Setup">
+        <div class="package-content">
+          <h3>Signature Setup</h3>
+          <p class="price">Starting at $375</p>
+          <p>A layered, high-impact look with arches, balloons, and custom details.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="section-title">
+      <h2>Gallery</h2>
+      <p>
+        A look at soft balloon styling, upgraded packages, backdrops, and full event
+        display ideas.
+      </p>
+    </div>
+
+    <div class="gallery">
+      <img src="images/niver-2.jpeg" alt="Package Guide">
+      <img src="images/niver-3.jpeg" alt="Upgrade Package Guide">
+      <img src="images/niver-4.jpeg" alt="Grab and Go Package">
+      <img src="images/niver-5.jpeg" alt="Essentials Package">
+      <img src="images/niver-6.jpeg" alt="Classic Package">
+      <img src="images/niver-8.jpeg" alt="Drapery Package">
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="cta">
+      <h2>Ready to plan your event?</h2>
+
+      <p>
+        Contact Niver Party Rentals to customize your colors, backdrop, balloons,
+        and add-ons for your next celebration.
+      </p>
+
+      <a href="mailto:hello@niverpartyrentals.com" class="btn">Inquire Now</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Niver Party Rentals | Soft, Elegant Event Styling</p>
+  </footer>
+
+</body>
+</html>
